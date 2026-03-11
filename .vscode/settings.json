@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.h": "c"   // Treat all .h files as C headers
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
