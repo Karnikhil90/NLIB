@@ -2,8 +2,7 @@
 #define NSTRING_H
 /*
     Here String libs mean char array or char pointer.
-    More like a string.h copy or python's versions of string functions as name
-
+    More like a string.h copy or python's versions of string functions
 */
 
 #include "ntype.h"
@@ -11,25 +10,20 @@
 #define BUFFER_UNIT 1024
 #define MAX_BUFFER (BUFFER_UNIT * 8)
 
-typedef char* str;
+/* basic utilities */
+int len(const char*);
+int count(const char*, char);
 
-int len(char*);
-
-int count(char* , char);
-
-// string function
-Bool lwr(char*);
-Bool upr(char*);
+/* string functions */
+Bool lwr(const char*);
+Bool upr(const char*);
 void toLwr(char*);
 void toUpr(char*);
-void copy(char* new, char* old);
-void repeate(char* , char);
+void copy(char* new, const char* old);
+void repeat(char*, char);
 
-substr(const char*, int end);
-substr_range(const char*,int from, int end);
+/* substring utilities */
+char* substr(const char*, int end);
+char* substr_range(const char*, int from, int end);
 
-
-
-#endif 
-
-
+#endif
