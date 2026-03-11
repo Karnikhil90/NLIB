@@ -11,7 +11,7 @@
 #define MAX_BUFFER (BUFFER_UNIT * 8)
 
 /* basic utilities */
-int len(const char*);
+
 int count(const char*, char);
 
 /* string functions */

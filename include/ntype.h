@@ -5,6 +5,7 @@
 
 #define is ==
 #define not !=
+#define and &&
 
 #define BUFFER_UNIT 1024
 
@@ -27,6 +28,16 @@ typedef struct String {
     char* s;
 } String;
 
+/*
+ utility
+*/
+
+static inline char* toBoolStr(const Bool val){
+    return val ? "True" : "False";
+}
+
+int len(const char*);
+void str_cpy(char *to ,const char *from);
 
 /* CONSTRUCTORS */
 String new_string();
@@ -35,12 +46,12 @@ String cstr(const char* cstr);
 void str_free(String *root);
 
 
-/* UTILITY */
+/* UTILITY for String struct */
 void print(String str);
-Bool str_equal(String a, String b);
+Bool isequals(String a, String b);
 String str_copy(String s);
 char str_idx(String s, int idx);
 void str_append(String* s, char c);
-void strapp(String* s, const char* txt);
+void sappend(String* s, const char* txt);
 
 #endif
