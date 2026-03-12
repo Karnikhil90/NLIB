@@ -84,7 +84,7 @@ void str_set(String *string, int index, char c) {
 int str_find_char(String value, char key){
     if(value.len is 0) return -1;
     for(int i = 0; i < value.len; i++) {
-        if(value->s[i] == key)
+        if(value.s[i] == key)
             return i;
     }
     return -1;
