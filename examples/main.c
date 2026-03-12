@@ -7,16 +7,12 @@
 */
 
 int main(){
-
-    String a = new_string();
-    String b = new_string();
-    sappend(&a,  "Hello");
-    sappend(&b,  "Hello");
+    String a = str_default("Im Nikhil ");
     print(a);
-    print(b);
-
-    Bool isequal = isequals(a,b);
-    printf("IS EQUALS = %s \n",toBoolStr(isequal)); // True
+    str_append_cstr(&a , "And this is my libbbb"); // Increased the capacity by 1.5x
+    print(a);
+    str_set(&a , -30, 'Q');
+    print(a);
     return 0;
 }
 
