@@ -2,27 +2,8 @@
 #define STRING_LIB_H
 
 #include <stddef.h>
+#include "ntools.h"
 
-#define not !=
-#define is ==
-#define and &&
-#define or ||
-#define ifnot(cond) if(!(cond))
-
-enum buffer { base_buffer = 1024, 
-    buffer_4x = (base_buffer * 4), 
-    buffer_8x = (base_buffer * 8), 
-    buffer_16x = (base_buffer * 16), 
-    buffer_24x = (base_buffer * 24) 
-};
-
-/*
-    Types 
-*/
-typedef enum {
-    False = 0,
-    True  = 1
-} Bool;
 
 typedef struct {
     int capacity;
