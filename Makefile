@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -g
 INCLUDE = -Iinclude
 BUILD = build
 SRC = src
-EXAMPLES = main
+EXAMPLES = list main
 
 # Library
 LIB = $(BUILD)/libnlib.a
@@ -35,7 +35,10 @@ $(BUILD)/%: examples/%.c $(LIB)
 clean:
 	rm -rf $(BUILD)/*
 
-run: $(BUILD)/main
+main: $(BUILD)/main
 	./$<
+list: $(BUILD)/list
+	./$<
+
 
 .PHONY: all clean
