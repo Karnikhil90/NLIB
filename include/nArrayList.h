@@ -43,7 +43,7 @@ typedef struct ArrayList {
 
 
 /* CONSTRUCTOR */
-ArrayList new_array_capacity(int arr_capacity, float growth);
+ArrayList new_array_capacity(uint arr_capacity, float growth);
 ArrayList new_init(); // default capacity is small_base_buffer
 ArrayList new_arr_copy(ArrayList arrary_list); // Deep Copy
 
@@ -51,14 +51,20 @@ ArrayList new_range(int start, int end, int update);
 ArrayList new_range_to(int start, int end);
 ArrayList new_range_(int end);
 ArrayList new_range_reverce(int start, int end, int update);
-void new_resize(ArrayList *list);
+Bool new_resize(ArrayList *list);
+
+/*
+    ERROR CHEAKING
+*/
+
+Bool arr_is_init(ArrayList *list);
 
 
 void arr_free(ArrayList *array_list); 
 
 /* CURD */
 
-void arr_add(ArrayList arrary_list, int value);
+void arr_add(ArrayList *arrary_list, int value);
 void arr_addAt(ArrayList arrary_list,int index ,int value);
 void arr_add_last(ArrayList arrary_list, int value);
 void arr_add_first(ArrayList arrary_list, int value);
@@ -94,7 +100,7 @@ void arr_merge(ArrayList *to_list , ArrayList *from_list);
         == CALCULATE FUNCTION ==
 
     % Manage the extra Stuff in the arraylist; 
-    % will calculate all these max,min,avg & etc. 
+    % will calculate all these max,min,avg & etc. (Auxiliary Data)
 
 */
 
