@@ -7,6 +7,10 @@
 #define or ||
 #define ifnot(cond) if(!(cond))
 
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 enum buffer { 
     base_buffer = 1024,
     small_base_buffer = 128,

@@ -1,7 +1,6 @@
 #ifndef STRING_LIB_H
 #define STRING_LIB_H
 
-#include <stddef.h>
 #include "ntools.h"
 
 
