@@ -1,6 +1,8 @@
 #ifndef NARRAYLIST_H
 #define NARRAYLIST_H
+
 #include "ntools.h"
+
 
 /*
 TODO: 
@@ -23,15 +25,17 @@ typedef struct ArrayList {
     int min_value;
     int avg_value;
     int sum_value;
-    int median_value;
+    // int median_value; REMOVED
 
     int positive_count; 
     int negative_count; 
     int zero_count;
 
-    unsigned int capacity;
-    unsigned int len;
+    uint capacity;
+    uint len;
+
     float growth_factor;
+    
     int *n;
 
 } ArrayList;
@@ -56,7 +60,7 @@ void arr_add_last(ArrayList arrary_list, int value);
 void arr_add_first(ArrayList arrary_list, int value);
 void arr_clean(ArrayList *arrary_list);
 
-int arr_get(ArrayList arrary_list, int index);
+int arr_get(ArrayList arrary_list, int index); 
 int arr_get_last(ArrayList arrary_list);
 int arr_get_first(ArrayList arrary_list);
 
@@ -71,7 +75,7 @@ int arr_remove_all(ArrayList *arrary_list, int value); // return the len
 /* BASIC ARRAY OPERATION */
 
 int arr_contain(ArrayList *arrary_list, int key); // return index 
-Bool arr_contain(ArrayList *arrary_list, int key);
+Bool arr_contains(ArrayList *arrary_list, int key);
 Bool arr_in(ArrayList *arrary_list1, ArrayList *arrary_list2);
 
 Bool arr_is_empty(ArrayList *arrary_list);
