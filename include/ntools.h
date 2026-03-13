@@ -25,7 +25,7 @@ typedef enum buffer {
     small_buffer_2x = (small_base_buffer * 2),
     small_buffer_4x = (small_base_buffer * 4),
     small_buffer_6x = (small_base_buffer * 6)
-};
+} buffer;
 
 typedef enum {
     OPS_Add,
