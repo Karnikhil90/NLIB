@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum buffer { 
+#define _STD_FACTOR_GROWTH_ 1.5f
+
+typedef enum buffer { 
     base_buffer = 1024,
     small_base_buffer = 128,
     
@@ -25,9 +27,25 @@ enum buffer {
     small_buffer_6x = (small_base_buffer * 6)
 };
 
+typedef enum {
+    OPS_Add,
+    OPS_Remove,
+    OPS_Update,
+    OPS_Clear,
+    OPS_Retrieve,
+    OPS_Set,
+    OPS_Count,
+    OPS_Reset,
+    OPS_Resize,
+    OPS_BulkAdd
+} AuxiliaryDataOperation;
+
+
 /*
     Types 
 */
+typedef unsigned int uint;
+
 typedef char *cstring; // char-array as string
 
 typedef enum {
