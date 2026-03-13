@@ -1,6 +1,4 @@
 #include "ntype.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void print(const String str){
     printf("[len=%d, capacity=%d] = '%s' \n", str.len, str.capacity, str.s);

@@ -25,7 +25,6 @@ typedef struct ArrayList {
     int min_value;
     int avg_value;
     int sum_value;
-    // int median_value; REMOVED
 
     int positive_count; 
     int negative_count; 
@@ -41,18 +40,23 @@ typedef struct ArrayList {
 } ArrayList;
 
 
+
+
 /* CONSTRUCTOR */
 ArrayList new_array_capacity(int arr_capacity, float growth);
 ArrayList new_init(); // default capacity is small_base_buffer
 ArrayList new_arr_copy(ArrayList arrary_list); // Deep Copy
+
 ArrayList new_range(int start, int end, int update);
 ArrayList new_range_to(int start, int end);
 ArrayList new_range_(int end);
 ArrayList new_range_reverce(int start, int end, int update);
+void new_resize(ArrayList *list);
+
 
 void arr_free(ArrayList *array_list); 
 
-/* ADD GET REMOVE */
+/* CURD */
 
 void arr_add(ArrayList arrary_list, int value);
 void arr_addAt(ArrayList arrary_list,int index ,int value);
@@ -94,7 +98,7 @@ void arr_merge(ArrayList *to_list , ArrayList *from_list);
 
 */
 
-void calculate(ArrayList *arrary_list);
+void calculate(ArrayList *arrary_list, int value ,AuxiliaryDataOperation operations);
 void calculate_clean(ArrayList *arrary_list);
 
 /* DISPLAY THE ARRAY */

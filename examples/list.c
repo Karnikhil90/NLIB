@@ -1,7 +1,12 @@
 #include <stdio.h> 
-#include "ntype.h"
+#include "nArrayList.h"
 
 int main(void){
-    printf("Hello form the world of list \n");
+    printf("\n=====================================================================\n\n");
+
+    ArrayList list = new_init();
+    arr_print(list);
+    arr_print_extra(list);
+    
     return 0;
 }
