@@ -63,7 +63,7 @@ Bool arr_is_init(ArrayList *list);
 
 
 /* CURD */
-
+void arr_addF(ArrayList *list, int value); // add fast and dont do the calculate()
 void arr_add(ArrayList *arrary_list, int value);
 void arr_addAt(ArrayList arrary_list,int index ,int value);
 void arr_add_last(ArrayList arrary_list, int value);

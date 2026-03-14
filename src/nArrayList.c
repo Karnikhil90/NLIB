@@ -25,7 +25,7 @@ ArrayList new_array_capacity(uint arr_capacity, float growth) {
 
     list.len = 0;
     // For better calculation
-    list.min_value = INT_MAX;
+    list.min_value = 0x7fffffff;
     list.max_value = INT_MIN; 
     return list;
 }
@@ -84,6 +84,60 @@ Bool new_resize(ArrayList *list) {
 }
 
 
+ArrayList new_range(int start, int end, int update) {
+    ArrayList list = {0};
+
+    if (start < INT_MIN || start > INT_MAX) {
+        perror("[ERROR] -> Start value is out of range");
+        return list; 
+    }
+
+    if (end < INT_MIN || end > INT_MAX) {
+        perror("[ERROR] -> End value is out of range");
+        return list; 
+    }
+
+    if (update == 0) {
+        perror("[ERROR] -> Update can't be zero");
+        return list;
+    }
+
+    printf("[DEBUG] Initial values: \n");
+    arr_print_extra(list);
+    printf("\n");
+
+    // Calculate the correct size
+    int count = (abs(end - start) / abs(update)) + 1; // Using absolute value to account for negative updates
+    list = new_array_capacity(count, _STD_FACTOR_GROWTH_);
+
+    // Loop to add values
+    for (int i = start; (start < end) ? (i <= end) : (i >= end); i += update) {
+        arr_addF(&list, i);
+        list.sum_value += i;
+
+        // Update min and max
+        if (i < list.min_value) {
+            list.min_value = i;
+        }
+        if (i > list.max_value) {
+            list.max_value = i;
+        }
+    }
+
+    list.avg_value = list.len ? (list.sum_value / list.len) : 0;
+    printf("[DEBUG] Final values: \n");
+    arr_print_extra(list);
+    printf("\n");
+    
+    return list;
+}
+
+ArrayList new_range_to(int start, int end){
+    return new_range(start,end,1);
+}
+ArrayList new_range_(int end){
+    return new_range(0,end,1);
+}
 
 /* END - CONSTRUCTORS */
 
@@ -123,7 +177,7 @@ void arr_add(ArrayList *list, int value) {
     if (list->len == list->capacity) {
         new_resize(list);
     }
-   printf("[DEBUG] Added value: %d at index %u\n", value, list->len-1);
+//    printf("[DEBUG] Added value: %d at index %u\n", value, list->len-1);
 
    /*
        TODO: calculate(&list,value ,OPS_Add) -> Auxiliary Data set up
@@ -132,6 +186,28 @@ void arr_add(ArrayList *list, int value) {
    calculate(list, value, OPS_Add);
 }
 
+
+
+void arr_addF(ArrayList *list, int value) {
+    Bool error_check = arr_is_init(list);
+  
+    if (!error_check) {
+        perror("[ERROR] -> Not initialized");
+        return;
+    }
+
+    if (list->len >= list->capacity) {
+        printf("[ERROR] -> Cannot add more elements, capacity reached (%u).\n", list->capacity);
+        return;
+    }
+    
+    list->n[list->len] = value; 
+    list->len++;
+    
+    if (list->len == list->capacity) {
+        new_resize(list);
+    }
+}
 
 void arr_add_last(ArrayList arrary_list, int value){
     arr_add(&arrary_list, value);
