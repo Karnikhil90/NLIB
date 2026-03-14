@@ -2,7 +2,7 @@
 #define NARRAYLIST_H
 
 #include "ntools.h"
-
+#include <limits.h>
 
 /*
 TODO: 
@@ -46,6 +46,7 @@ typedef struct ArrayList {
 ArrayList new_array_capacity(uint arr_capacity, float growth);
 ArrayList new_init(); // default capacity is small_base_buffer
 ArrayList new_arr_copy(ArrayList arrary_list); // Deep Copy
+void arr_free(ArrayList *array_list); 
 
 ArrayList new_range(int start, int end, int update);
 ArrayList new_range_to(int start, int end);
@@ -60,15 +61,15 @@ Bool new_resize(ArrayList *list);
 Bool arr_is_init(ArrayList *list);
 
 
-void arr_free(ArrayList *array_list); 
 
 /* CURD */
 
 void arr_add(ArrayList *arrary_list, int value);
 void arr_addAt(ArrayList arrary_list,int index ,int value);
 void arr_add_last(ArrayList arrary_list, int value);
-void arr_add_first(ArrayList arrary_list, int value);
+void arr_add_first(ArrayList *arrary_list, int value);
 void arr_clean(ArrayList *arrary_list);
+void arr_insertAt(ArrayList arrary_list,int index ,int value); // update the value
 
 int arr_get(ArrayList arrary_list, int index); 
 int arr_get_last(ArrayList arrary_list);
@@ -104,7 +105,7 @@ void arr_merge(ArrayList *to_list , ArrayList *from_list);
 
 */
 
-void calculate(ArrayList *arrary_list, int value ,AuxiliaryDataOperation operations);
+void calculate(ArrayList *list, int value ,AuxiliaryDataOperation operations);
 void calculate_clean(ArrayList *arrary_list);
 
 /* DISPLAY THE ARRAY */

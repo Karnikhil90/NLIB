@@ -23,9 +23,38 @@ ArrayList new_array_capacity(uint arr_capacity, float growth) {
         exit(1);
     }
 
-    list.len = 0; 
+    list.len = 0;
+    // For better calculation
+    list.min_value = INT_MAX;
+    list.max_value = INT_MIN; 
     return list;
 }
+
+ArrayList new_arr_copy(ArrayList arrary_list) {
+    ArrayList list;  // Declare the list
+
+    if (!arr_is_init(&arrary_list)) {
+        perror("[ERROR] -> Not initialized");
+        list.len = 0; // Set to an empty state
+        return list;  // Return an empty ArrayList
+    }
+
+    // Initialize list with proper capacity and growth factor
+    list = new_array_capacity(arrary_list.capacity, arrary_list.growth_factor);
+    if (!list.n) {
+        perror("[ERROR] -> Memory allocation failed");
+        list.len = 0; // Set to an empty state
+        return list;  // Return an empty ArrayList on failure
+    }
+
+    for (uint i = 0; i < arrary_list.len; i++) {
+        arr_add(&list, arrary_list.n[i]);
+    }
+    
+    list.len = arrary_list.len; // Ensure the length is set
+    return list;
+}
+
 
 ArrayList new_init(){
     return new_array_capacity(small_base_buffer, _STD_FACTOR_GROWTH_);
@@ -53,6 +82,8 @@ Bool new_resize(ArrayList *list) {
     list->n = new_array;
     return True;
 }
+
+
 
 /* END - CONSTRUCTORS */
 
@@ -97,6 +128,8 @@ void arr_add(ArrayList *list, int value) {
    /*
        TODO: calculate(&list,value ,OPS_Add) -> Auxiliary Data set up
    */
+
+   calculate(list, value, OPS_Add);
 }
 
 
@@ -104,7 +137,62 @@ void arr_add_last(ArrayList arrary_list, int value){
     arr_add(&arrary_list, value);
 }
 
+void arr_add_first(ArrayList *arrary_list, int value) {
+    if (arrary_list->len >= arrary_list->capacity) {
+        new_resize(arrary_list);
+    }
+    arrary_list->len++;
+    // Shifting 
+    for (uint i = arrary_list->len; i > 0; i--) {
+        arrary_list->n[i] = arrary_list->n[i - 1];
+    }
+    // arr_print(*arrary_list);
+    arrary_list->n[0] = value;
+}
+
 /* END - CURD */
+
+/* START - CALCULATE FUNCTION*/
+
+void calculate(ArrayList *list, int value ,AuxiliaryDataOperation operations){
+    switch (operations)
+    {
+    case OPS_Add :
+        
+        if(value is 0) list->zero_count++;
+        else if(value > 0) list->positive_count++;
+        else list->negative_count++;
+        
+        list->sum_value += value;
+        list->avg_value = (list->sum_value / list->len);
+
+        list->max_value = (list->max_value < value) ? value : list->max_value;
+        list->min_value = (list->min_value > value) ? value : list->min_value;
+
+        break;
+    
+    default:
+        printf("[SW-DF] OPERATION NOT DEFINED");
+        break;
+    }
+}
+
+void calculate_clean(ArrayList *list){
+    list->avg_value = 0;
+    list->sum_value = 0;
+    list->min_value = INT_MAX;
+    list->max_value = INT_MIN; 
+
+    list->len = 0;
+
+    list->zero_count = 0;
+    list->positive_count = 0;
+    list->negative_count = 0;
+
+
+}
+
+/* END - CALCULATE FUNCTION*/
 
 
 /* START - DISPLAY THE ARRAY */
@@ -123,6 +211,7 @@ void arr_print(ArrayList arrary_list){
     printf("}\n");
     
 }
+
 void arr_print_extra(ArrayList list){
     printf("values -> [max=%d, min=%d, avg=%d, sum=%d ] \n" , list.max_value, list.min_value,list.avg_value,list.sum_value);
     printf("counts -> [posivite=%d, negative=%d, zero=%d ]\n" , list.positive_count, list.negative_count,list.zero_count);
