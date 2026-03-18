@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #define _STD_FACTOR_GROWTH_ 1.5f
 
