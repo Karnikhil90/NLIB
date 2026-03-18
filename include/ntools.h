@@ -45,7 +45,7 @@ typedef enum {
     Types 
 */
 typedef unsigned int uint;
-
+typedef unsigned char Byte; 
 typedef char *cstring; // char-array as string
 
 typedef enum {
