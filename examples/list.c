@@ -29,11 +29,14 @@ int main(void){
     // arr_print_extra(new_list);
     
     
-    ArrayList list = new_range(0, 10, 1);
+    ArrayList list = new_range_(10);
     arr_print(list);
     arr_print_extra(list);
     
 
+    int *var = arr_get(list, -3);
+    if(var == NULL) printf("THE VALUE IS NULL \n");
+    else printf("The value is '%d' \n", *var);
     // for(int i = 10, i )
 
 

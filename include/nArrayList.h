@@ -71,7 +71,7 @@ void arr_add_first(ArrayList *arrary_list, int value);
 void arr_clean(ArrayList *arrary_list);
 void arr_insertAt(ArrayList arrary_list,int index ,int value); // update the value
 
-int arr_get(ArrayList arrary_list, int index); 
+int* arr_get(ArrayList arrary_list, int index); 
 int arr_get_last(ArrayList arrary_list);
 int arr_get_first(ArrayList arrary_list);
 

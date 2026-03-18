@@ -58,7 +58,6 @@ void str_clear(String *s){
 // String str_substr_f(String s, int start, int end){
 
 // }
-#include <stdio.h>
 
 void str_set(String *string, int index, char c) {
     if (string->len == 0) {

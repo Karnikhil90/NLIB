@@ -25,7 +25,7 @@ ArrayList new_array_capacity(uint arr_capacity, float growth) {
 
     list.len = 0;
     // For better calculation
-    list.min_value = 0x7fffffff;
+    list.min_value = INT_MAX;
     list.max_value = INT_MIN; 
     return list;
 }
@@ -102,16 +102,16 @@ ArrayList new_range(int start, int end, int update) {
         return list;
     }
 
-    printf("[DEBUG] Initial values: \n");
-    arr_print_extra(list);
-    printf("\n");
+    // printf("[DEBUG] Initial values: \n");
+    // arr_print_extra(list);
+    // printf("\n");
 
     // Calculate the correct size
     int count = (abs(end - start) / abs(update)) + 1; // Using absolute value to account for negative updates
     list = new_array_capacity(count, _STD_FACTOR_GROWTH_);
 
     // Loop to add values
-    for (int i = start; (start < end) ? (i <= end) : (i >= end); i += update) {
+    for (int i = start; (start < end) ? (i < end) : (i >= end); i += update) {
         arr_addF(&list, i);
         list.sum_value += i;
 
@@ -125,9 +125,9 @@ ArrayList new_range(int start, int end, int update) {
     }
 
     list.avg_value = list.len ? (list.sum_value / list.len) : 0;
-    printf("[DEBUG] Final values: \n");
-    arr_print_extra(list);
-    printf("\n");
+    // printf("[DEBUG] Final values: \n");
+    // arr_print_extra(list);
+    // printf("\n");
     
     return list;
 }
@@ -225,6 +225,18 @@ void arr_add_first(ArrayList *arrary_list, int value) {
     // arr_print(*arrary_list);
     arrary_list->n[0] = value;
 }
+
+int* arr_get(ArrayList arr, int index) {
+    if (arr.len == 0) return NULL;
+
+    if (index < 0) index = arr.len + index;
+
+    if (index < 0 || index >= (int)arr.len) return NULL;
+
+    return &arr.n[index];
+}
+
+
 
 /* END - CURD */
 
