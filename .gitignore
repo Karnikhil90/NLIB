@@ -1,4 +1,9 @@
-build/*
+# build & bin 
+build
+# *.ps1
+*.o
+# for WINDOWS
+*.exe
 
 # code editro stuff
 .vscode/*
