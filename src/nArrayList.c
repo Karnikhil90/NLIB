@@ -236,6 +236,13 @@ int* arr_get(ArrayList arr, int index) {
     return &arr.n[index];
 }
 
+int* arr_get_last(ArrayList arrary_list){
+    return arr_get(arrary_list, arrary_list.len - 1);
+}
+
+int* arr_get_first(ArrayList arrary_list){
+    return arr_get(arrary_list, 0);
+}
 
 
 /* END - CURD */
