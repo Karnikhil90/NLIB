@@ -19,10 +19,15 @@ ArrayList new_array_capacity(uint arr_capacity, float growth) {
     list.growth_factor = growth;
     list.n = (int *)malloc(list.capacity * sizeof(int)); 
     if (!list.n) {
-        perror("malloc failed");
+        perror("[FAILED] : Main array");
         exit(1);
     }
 
+    list.isPresent = (Byte *)malloc(list.capacity * sizeof(Byte));
+    if (!list.isPresent) {
+        perror("[FAILED] : isPresent data.");
+        exit(1);
+    }
     list.len = 0;
     // For better calculation
     list.min_value = INT_MAX;
@@ -97,7 +102,7 @@ ArrayList new_range(int start, int end, int update) {
         return list; 
     }
 
-    if (update == 0) {
+    if (update is 0) {
         perror("[ERROR] -> Update can't be zero");
         return list;
     }
@@ -244,6 +249,9 @@ int* arr_get_first(ArrayList arrary_list){
     return arr_get(arrary_list, 0);
 }
 
+void arr_insertAt(ArrayList arrary_list,int index ,int value){
+    
+}
 
 /* END - CURD */
 
