@@ -249,9 +249,9 @@ int* arr_get_first(ArrayList arrary_list){
     return arr_get(arrary_list, 0);
 }
 
-void arr_insertAt(ArrayList arrary_list,int index ,int value){
+// void arr_insertAt(ArrayList arrary_list,int index ,int value){
     
-}
+// }
 
 /* END - CURD */
 
