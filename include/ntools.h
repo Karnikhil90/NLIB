@@ -48,6 +48,9 @@ typedef enum {
 typedef unsigned int uint;
 typedef unsigned char Byte; 
 typedef char *cstring; // char-array as string
+typedef unsigned int u32;
+typedef unsigned long long u64;
+
 
 typedef enum {
     False = 0,
